@@ -1,0 +1,25 @@
+{
+  "name": "cloudpulse",
+  "version": "1.0.0",
+  "description": "CloudPulse - Website Uptime Monitor (simple version)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning --env-file=.env server.js",
+    "dev": "node --watch --disable-warning=ExperimentalWarning --env-file=.env server.js",
+    "flaky": "node flaky-server.js",
+    "test": "node --disable-warning=ExperimentalWarning test-monitor.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "node-cron": "^4.6.0",
+    "nodemailer": "^10.0.10"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}

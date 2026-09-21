@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CloudPulse</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ============ LOGIN / REGISTER ============ -->
+<main id="auth-view" class="auth-wrap" hidden>
+  <div class="card auth-card">
+    <h1 class="brand">☁️ CloudPulse</h1>
+    <p class="muted center">Website uptime monitoring</p>
+
+    <form id="login-form" novalidate>
+      <label for="l-email">Email</label>
+      <input class="input" id="l-email" type="email" autocomplete="email" required>
+      <label for="l-password">Password</label>
+      <input class="input" id="l-password" type="password" autocomplete="current-password" required>
+      <p class="error" id="login-error" role="alert"></p>
+      <button class="btn primary" type="submit">Log in</button>
+      <p class="muted center">No account? <a href="#" id="show-register">Register</a></p>
+    </form>
+
+    <form id="register-form" novalidate hidden>
+      <label for="r-name">Name</label>
+      <input class="input" id="r-name" autocomplete="name" required>
+      <label for="r-email">Email</label>
+      <input class="input" id="r-email" type="email" autocomplete="email" required>
+      <label for="r-password">Password (8+ characters)</label>
+      <input class="input" id="r-password" type="password" autocomplete="new-password" required>
+      <label for="r-confirm">Confirm password</label>
+      <input class="input" id="r-confirm" type="password" autocomplete="new-password" required>
+      <p class="error" id="register-error" role="alert"></p>
+      <button class="btn primary" type="submit">Create account</button>
+      <p class="muted center">Have an account? <a href="#" id="show-login">Log in</a></p>
+    </form>
+  </div>
+</main>
+
+<!-- ============ DASHBOARD ============ -->
+<div id="dash-view" class="page" hidden>
+  <header class="topbar">
+    <h1 class="brand">☁️ CloudPulse</h1>
+    <div><span class="muted" id="who"></span> <button class="btn small" id="logout">Log out</button></div>
+  </header>
+
+  <section class="tiles" id="tiles"></section>
+
+  <section class="card">
+    <h2>Add a website</h2>
+    <form id="add-form" class="row" novalidate>
+      <div><label for="url">Website URL</label><input class="input" id="url" placeholder="https://example.com" required></div>
+      <div><label for="alertEmail">Alert email</label><input class="input" id="alertEmail" type="email" required></div>
+      <button class="btn primary" type="submit">Start monitoring</button>
+    </form>
+    <p class="error" id="add-error" role="alert"></p>
+  </section>
+
+  <section>
+    <h2>Websites</h2>
+    <div class="card scroll"><table id="sites"></table></div>
+  </section>
+
+  <section id="detail" hidden>
+    <h2 id="detail-title"></h2>
+    <div class="tiles" id="detail-tiles"></div>
+    <div class="card"><h3>Response time</h3><div class="chart-box"><canvas id="chart"></canvas></div></div>
+    <h3>Incidents</h3>
+    <div class="card scroll"><table id="detail-incidents"></table></div>
+    <h3>Monitoring history</h3>
+    <div class="card scroll"><table id="detail-checks"></table></div>
+  </section>
+
+  <section>
+    <h2>Recent incidents</h2>
+    <div class="card scroll"><table id="incidents"></table></div>
+  </section>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
